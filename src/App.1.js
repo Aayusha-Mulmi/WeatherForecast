@@ -4,17 +4,9 @@ import Typewriters from "./components/Typewriters";
 import CenterContent from "./components/CenterContents";
 import LastContent from "./components/LastContent";
 import FadeLoader from "react-spinners/FadeLoader";
+import { api, temperatureApi } from "./App";
 
-const api = {
-  key: "b707cfbff99545e785fc7ce3740f04ab",
-  base: "https://api.geoapify.com/v1/geocode/",
-};
-
-const temperatureApi = {
-  base: "https://api.open-meteo.com/v1/",
-};
-
-function App() {
+export function App() {
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState({});
   const [temperature, setTemperature] = useState(null);
@@ -34,8 +26,7 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
-
+  // const [suggestions, setSuggestions] = useState([]);
   // const onChange = async (e) => {
   //   setSearch(e.target.value);
   //   const response = await fetch(
@@ -45,7 +36,6 @@ function App() {
   //   console.log(data);
   //   setSuggestions(data.features);
   // };
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       SearchPressed();
@@ -286,12 +276,13 @@ function App() {
                     fontFamily: '"Inria Sans", sans-serif',
                   }}
                   placeholder={`${search}`} //"Enter city/town"
-                  onChange={((e)=>setSearch(e.target.value))}
+                  onChange={onChange}
                   onKeyDown={handleKeyPress}
+                  value={search}
                 />
               </span>
             </h1>
-            {/* <div className="dropdown-content">
+            <div className="dropdown-content">
               {suggestions &&
                 suggestions.map((suggestion) => (
                   <div
@@ -305,7 +296,7 @@ function App() {
                     <hr />
                   </div>
                 ))}
-            </div> */}
+            </div>
           </div>
 
           {noResults && <p>No results found.</p>}
@@ -340,5 +331,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
