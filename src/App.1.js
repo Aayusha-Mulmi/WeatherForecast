@@ -4,17 +4,9 @@ import Typewriters from "./components/Typewriters";
 import CenterContent from "./components/CenterContents";
 import LastContent from "./components/LastContent";
 import FadeLoader from "react-spinners/FadeLoader";
+import { api, temperatureApi } from "./App";
 
-const api = {
-  key: "b707cfbff99545e785fc7ce3740f04ab",
-  base: "https://api.geoapify.com/v1/geocode/",
-};
-
-const temperatureApi = {
-  base: "https://api.open-meteo.com/v1/",
-};
-
-function App() {
+export function App() {
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState({});
   const [temperature, setTemperature] = useState(null);
@@ -34,14 +26,7 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [loading, setLoading] = useState(false);
-<<<<<<< HEAD
-  const [unit, setUnit]=useState("C")
-  const [celsiusHighlighted, setCelsiusHighlighted] = useState(true);
-const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
-=======
-  const [suggestions, setSuggestions] = useState([]);
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
-
+  // const [suggestions, setSuggestions] = useState([]);
   // const onChange = async (e) => {
   //   setSearch(e.target.value);
   //   const response = await fetch(
@@ -51,12 +36,6 @@ const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
   //   console.log(data);
   //   setSuggestions(data.features);
   // };
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       SearchPressed();
@@ -142,80 +121,6 @@ const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
       .catch((error) => console.error("Temperature API Error:", error));
   };
 
-<<<<<<< HEAD
-const celsiusToFahrenheit = (celsius) => ((celsius * 9) / 5 + 32).toFixed(2);
-const fahrenheitToCelsius = (fahrenheit) => (((fahrenheit - 32) * 5) / 9).toFixed(2);
-
-const convertTemperature = (temperature, targetUnit) => {
-  if (Array.isArray(temperature)) {
-    if (targetUnit === "F") {
-      return temperature.map((temp) => celsiusToFahrenheit(temp));
-    } else {
-      return temperature.map((temp) => fahrenheitToCelsius(temp));
-    }
-  } else {
-    if (targetUnit === "F") {
-      return celsiusToFahrenheit(temperature);
-    } else {
-      return fahrenheitToCelsius(temperature);
-    }
-  }
-};
-
-const handleCelsiusClick = () => {
-  if (unit !== "C") {
-    setMinTemp(convertTemperature(mintemp, "C"));
-    setMaxTemp(convertTemperature(maxtemp, "C"));
-    setTommin(convertTemperature(tommin, "C"));
-    setTommax(convertTemperature(tommax, "C"));
-    setThurmin(convertTemperature(thurmin, "C"));
-    setThurmax(convertTemperature(thurmax, "C"));
-    setFrimin(convertTemperature(frimin, "C"));
-    setFrimax(convertTemperature(frimax, "C"));
-    setSatmin(convertTemperature(satmin, "C"));
-    setSatmax(convertTemperature(satmax, "C"));
-    setTemperature({
-      ...temperature,
-      current: {
-        ...temperature.current,
-        temperature_2m: convertTemperature(temperature.current?.temperature_2m, "C")
-      }
-    });
-    setUnit("C");
-    setCelsiusHighlighted(true);
-    setFahrenheitHighlighted(false);
-  }
-};
-
-const handleFahrenheitClick = () => {
-  if (unit !== "F") {
-    setMinTemp(convertTemperature(mintemp, "F"));
-    setMaxTemp(convertTemperature(maxtemp, "F"));
-    setTommin(convertTemperature(tommin, "F"));
-    setTommax(convertTemperature(tommax, "F"));
-    setThurmin(convertTemperature(thurmin, "F"));
-    setThurmax(convertTemperature(thurmax, "F"));
-    setFrimin(convertTemperature(frimin, "F"));
-    setFrimax(convertTemperature(frimax, "F"));
-    setSatmin(convertTemperature(satmin, "F"));
-    setSatmax(convertTemperature(satmax, "F"));
-    setTemperature({
-      ...temperature,
-      current: {
-        ...temperature.current,
-        temperature_2m: convertTemperature(temperature.current?.temperature_2m, "F")
-      }
-    });
-    setUnit("F");
-    setFahrenheitHighlighted(true);
-    setCelsiusHighlighted(false);
-  }
-};
-
-  
-
-=======
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
   // Location data is not changed frequently so we dont use useEffect here
   var weather_key = "weather_" + search.toLowerCase().replace(/\s/g, "_");
   const SearchPressed = () => {
@@ -371,12 +276,13 @@ const handleFahrenheitClick = () => {
                     fontFamily: '"Inria Sans", sans-serif',
                   }}
                   placeholder={`${search}`} //"Enter city/town"
-                  onChange={((e)=>setSearch(e.target.value))}
+                  onChange={onChange}
                   onKeyDown={handleKeyPress}
+                  value={search}
                 />
               </span>
             </h1>
-            {/* <div className="dropdown-content">
+            <div className="dropdown-content">
               {suggestions &&
                 suggestions.map((suggestion) => (
                   <div
@@ -390,7 +296,7 @@ const handleFahrenheitClick = () => {
                     <hr />
                   </div>
                 ))}
-            </div> */}
+            </div>
           </div>
 
           {noResults && <p>No results found.</p>}
@@ -417,18 +323,7 @@ const handleFahrenheitClick = () => {
                 FriMaxTemp={frimax[3]}
                 SatMinTemp={satmin[4]}
                 SatMaxTemp={satmax[4]}
-<<<<<<< HEAD
-
-             
               />
-
-              <div className="last_buttons">
-                <button className={`celsius_button ${celsiusHighlighted ? 'highlight' : ''}`} onClick={handleCelsiusClick}>°C </button>|
-                <button className= {`fahrenheit_button ${fahrenheitHighlighted ? 'highlight' : ''}`}onClick={handleFahrenheitClick}>°F</button>
-              </div>
-=======
-              />
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
             </>
           )}
         </>
@@ -436,5 +331,3 @@ const handleFahrenheitClick = () => {
     </div>
   );
 }
-
-export default App;

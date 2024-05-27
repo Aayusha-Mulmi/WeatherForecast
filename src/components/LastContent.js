@@ -51,8 +51,11 @@ export default function LastContent({ TomMinTemp, TomMaxTemp,ThursMinTemp, Thurs
         </div>
         <span className="span1">SAT</span>
       </div>
+<<<<<<< HEAD
 
       
+=======
+>>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
     </div>
   );
 }
