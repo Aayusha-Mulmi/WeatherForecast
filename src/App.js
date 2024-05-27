@@ -34,13 +34,11 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [loading, setLoading] = useState(false);
-<<<<<<< HEAD
   const [unit, setUnit]=useState("C")
   const [celsiusHighlighted, setCelsiusHighlighted] = useState(true);
-const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
-=======
-  const [suggestions, setSuggestions] = useState([]);
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
+const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false); 
+ const [suggestions, setSuggestions] = useState([]);
+
 
   // const onChange = async (e) => {
   //   setSearch(e.target.value);
@@ -51,12 +49,6 @@ const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
   //   console.log(data);
   //   setSuggestions(data.features);
   // };
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       SearchPressed();
@@ -142,7 +134,6 @@ const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
       .catch((error) => console.error("Temperature API Error:", error));
   };
 
-<<<<<<< HEAD
 const celsiusToFahrenheit = (celsius) => ((celsius * 9) / 5 + 32).toFixed(2);
 const fahrenheitToCelsius = (fahrenheit) => (((fahrenheit - 32) * 5) / 9).toFixed(2);
 
@@ -211,11 +202,6 @@ const handleFahrenheitClick = () => {
     setCelsiusHighlighted(false);
   }
 };
-
-  
-
-=======
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
   // Location data is not changed frequently so we dont use useEffect here
   var weather_key = "weather_" + search.toLowerCase().replace(/\s/g, "_");
   const SearchPressed = () => {
@@ -417,8 +403,6 @@ const handleFahrenheitClick = () => {
                 FriMaxTemp={frimax[3]}
                 SatMinTemp={satmin[4]}
                 SatMaxTemp={satmax[4]}
-<<<<<<< HEAD
-
              
               />
 
@@ -426,9 +410,9 @@ const handleFahrenheitClick = () => {
                 <button className={`celsius_button ${celsiusHighlighted ? 'highlight' : ''}`} onClick={handleCelsiusClick}>°C </button>|
                 <button className= {`fahrenheit_button ${fahrenheitHighlighted ? 'highlight' : ''}`}onClick={handleFahrenheitClick}>°F</button>
               </div>
-=======
-              />
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
+
+              
+
             </>
           )}
         </>

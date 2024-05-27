@@ -272,11 +272,9 @@ label {
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-content: flex-end;
-<<<<<<< HEAD
+
   margin-bottom: 5em;
-=======
   /* margin-bottom: 10em; */
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
 }
 @media screen and (max-width: 991px) {
   .Finalcontent {
@@ -296,7 +294,6 @@ label {
   top: 165px;
   right: 605px;
 }
-<<<<<<< HEAD
 
 .last_buttons{
   display: flex;
@@ -329,5 +326,3 @@ label {
   background-color: #f5cb42; /* Change this to the desired highlight color */
   color: black; /* Change this to the desired text color */
 }
-=======
->>>>>>> 7e7ee91540c0341e07553177305ee971dfc4e7b9
