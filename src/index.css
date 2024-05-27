@@ -320,3 +320,7 @@ label {
   background-color: #e0e0e0; /* Change background color on hover */
   color: #7a7a7a; /* Change text color on hover */
 }
+.highlight {
+  background-color: #f5cb42; /* Change this to the desired highlight color */
+  color: black; /* Change this to the desired text color */
+}

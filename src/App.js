@@ -36,6 +36,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [unit, setUnit]=useState("C")
+  const [celsiusHighlighted, setCelsiusHighlighted] = useState(true);
+const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
 
   // const onChange = async (e) => {
   //   setSearch(e.target.value);
@@ -173,6 +175,8 @@ const handleCelsiusClick = () => {
       }
     });
     setUnit("C");
+    setCelsiusHighlighted(true);
+    setFahrenheitHighlighted(false);
   }
 };
 
@@ -196,6 +200,8 @@ const handleFahrenheitClick = () => {
       }
     });
     setUnit("F");
+    setFahrenheitHighlighted(true);
+    setCelsiusHighlighted(false);
   }
 };
 
@@ -407,8 +413,8 @@ const handleFahrenheitClick = () => {
               />
 
               <div className="last_buttons">
-                <button className="celsius_button" onClick={handleCelsiusClick}>°C |</button>
-                <button className="fahrenheit_button" onClick={handleFahrenheitClick}>°F</button>
+                <button className={`celsius_button ${celsiusHighlighted ? 'highlight' : ''}`} onClick={handleCelsiusClick}>°C </button>|
+                <button className= {`fahrenheit_button ${fahrenheitHighlighted ? 'highlight' : ''}`}onClick={handleFahrenheitClick}>°F</button>
               </div>
             </>
           )}
