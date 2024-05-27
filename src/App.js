@@ -34,7 +34,6 @@ function App() {
   const [noResults, setNoResults] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
   const [unit, setUnit]=useState("C")
   const [celsiusHighlighted, setCelsiusHighlighted] = useState(true);
 const [fahrenheitHighlighted, setFahrenheitHighlighted] = useState(false);
